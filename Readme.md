@@ -1,8 +1,8 @@
-transformer block
-    multiheadattention
-    feed forward NN
-    normalization
-    dropout
+transformer block - ✅
+    multiheadattention - ✅
+    feed forward NN - ✅
+    normalization - ✅
+    dropout - ✅
 GPT model
     token embedding
     positional embedding
