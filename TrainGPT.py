@@ -3,9 +3,21 @@ from create_dataloader import create_dataloader
 from load_data import load_data
 from config import GPT_CONFIG_124M
 from GPTModel import GPTMODEL
+import logging
+from pathlib import Path
+from datetime import datetime
 
-text = load_data(path="Trials/discipline.txt")
+now = datetime.now()
+logging.basicConfig(level=logging.INFO, 
+                    format='%(asctime)s - %(levelname)s - %(message)s',
+                    datefmt='%Y-%m-%d %H:%M:%S',
+                    filename=f'logs/train_{now.strftime("%Y-%m-%d_%H-%M-%S")}_{now.time()}.log',
+                    filemode='a')
 
+torch.manual_seed(42)
+path = Path("Train_data/discipline.txt")
+text = load_data(path)
+logging.info(f'Training Data Path: {path}')
 # 1. Split the token list into training and validation sets
 train_ratio = 0.8
 train_size = int(train_ratio * len(text))
@@ -31,11 +43,11 @@ val_loader = create_dataloader(
 
 trainiter = iter(train_loader) 
 train_inputs, train_targets = next(trainiter)
-print(f"Train Loader Shape: \nInputs: {train_inputs.shape}\nTarget: {train_targets.shape}")
+logging.info(f"Train Loader Shape: \nInputs: {train_inputs.shape}\nTarget: {train_targets.shape}")
 
 valiter = iter(val_loader) 
 val_inputs, val_targets = next(valiter)
-print(f"Validation Loader Shape: \nInputs: {val_inputs.shape}\nTarget: {val_targets.shape}")
+logging.info(f"Validation Loader Shape: \nInputs: {val_inputs.shape}\nTarget: {val_targets.shape}")
 
 
 def calc_loss_batch(input_batch, target_batch, model, device):
@@ -65,7 +77,7 @@ def calc_loss_loader(data_loader, model, device, num_batches=None):
 
 
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-
+logging.info(f"Using device: {device}")
 # Evaluate model
 def evaluate_model(model, train_loader, val_loader, device,):
     model.eval()
@@ -80,6 +92,7 @@ def train_model(model, train_loader, val_loader, optimizer, device, num_epochs,
                 eval_freq,):
     train_losses, val_losses = [], []
     print("Training...")
+    logging.info("Training...")
     for epoch in range(num_epochs):
         model.train()
 
@@ -94,17 +107,23 @@ def train_model(model, train_loader, val_loader, optimizer, device, num_epochs,
             train_losses.append(trai_loss)
             val_losses.append(val_loss)
             print(f"Epoch {epoch + 1}/{num_epochs}, Train Loss: {trai_loss:.4f}, Val Loss: {val_loss:.4f}")
+            logging.info(f"Epoch {epoch + 1}/{num_epochs}, Train Loss: {trai_loss:.4f}, Val Loss: {val_loss:.4f}")
+        
     print("Training complete.")
+    logging.info("Training complete.")
     return train_losses, val_losses
 
 model = GPTMODEL(GPT_CONFIG_124M)
 model.to(device)
 optimizer = torch.optim.Adam(model.parameters(), lr=0.001, weight_decay=0.1)
-num_epochs = 10
+num_epochs = 20
 eval_freq = 1
 
 train_losses, val_losses = train_model(model, train_loader, val_loader, optimizer, device, num_epochs, eval_freq)
 
+# save model
+torch.save(model.state_dict(), f'./models/model_{num_epochs}_epochs_date{now.date()}.pth')
+logging.info(f"Model saved at ./models/model_{num_epochs}_epochs_date{now.date()}.pth")
 import matplotlib.pyplot as plt
 
 plt.plot(list(range(1, num_epochs + 1)), train_losses, label='Training Loss')
@@ -112,4 +131,4 @@ plt.plot(list(range(1, num_epochs + 1)), val_losses, label='Validation Loss')
 plt.xlabel('Epoch')
 plt.ylabel('Loss')
 plt.legend()
-plt.show()
+plt.savefig('loss_plot.png', dpi = 300)

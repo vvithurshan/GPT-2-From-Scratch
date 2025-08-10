@@ -1,0 +1,8 @@
+2025-08-10 10:43:49 - INFO - Training Data Path: Train_data/discipline.txt
+2025-08-10 10:43:50 - INFO - Train Loader Shape: 
+Inputs: torch.Size([2, 1024])
+Target: torch.Size([2, 1024])
+2025-08-10 10:43:50 - INFO - Validation Loader Shape: 
+Inputs: torch.Size([1, 1024])
+Target: torch.Size([1, 1024])
+2025-08-10 10:43:50 - INFO - Using device: cpu

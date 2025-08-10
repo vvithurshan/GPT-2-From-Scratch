@@ -1,0 +1,31 @@
+2025-08-10 10:47:31 - INFO - Training Data Path: Train_data/discipline.txt
+2025-08-10 10:47:31 - INFO - Train Loader Shape: 
+Inputs: torch.Size([2, 1024])
+Target: torch.Size([2, 1024])
+2025-08-10 10:47:31 - INFO - Validation Loader Shape: 
+Inputs: torch.Size([1, 1024])
+Target: torch.Size([1, 1024])
+2025-08-10 10:47:31 - INFO - Using device: cpu
+2025-08-10 10:47:32 - INFO - Training...
+2025-08-10 10:47:48 - INFO - Epoch 1/20, Train Loss: 9.6748, Val Loss: 9.8897
+2025-08-10 10:48:05 - INFO - Epoch 2/20, Train Loss: 9.0098, Val Loss: 9.3110
+2025-08-10 10:48:20 - INFO - Epoch 3/20, Train Loss: 8.5004, Val Loss: 8.8927
+2025-08-10 10:48:37 - INFO - Epoch 4/20, Train Loss: 8.0609, Val Loss: 8.5428
+2025-08-10 10:48:54 - INFO - Epoch 5/20, Train Loss: 7.7130, Val Loss: 8.2867
+2025-08-10 10:49:12 - INFO - Epoch 6/20, Train Loss: 7.4560, Val Loss: 8.1350
+2025-08-10 10:49:29 - INFO - Epoch 7/20, Train Loss: 7.2662, Val Loss: 8.0417
+2025-08-10 10:49:47 - INFO - Epoch 8/20, Train Loss: 7.1174, Val Loss: 7.9701
+2025-08-10 10:50:07 - INFO - Epoch 9/20, Train Loss: 6.9872, Val Loss: 7.9123
+2025-08-10 10:50:31 - INFO - Epoch 10/20, Train Loss: 6.8787, Val Loss: 7.8708
+2025-08-10 10:51:00 - INFO - Epoch 11/20, Train Loss: 6.7817, Val Loss: 7.8323
+2025-08-10 10:51:26 - INFO - Epoch 12/20, Train Loss: 6.6994, Val Loss: 7.8007
+2025-08-10 10:51:49 - INFO - Epoch 13/20, Train Loss: 6.6249, Val Loss: 7.7707
+2025-08-10 10:52:09 - INFO - Epoch 14/20, Train Loss: 6.5629, Val Loss: 7.7454
+2025-08-10 10:52:28 - INFO - Epoch 15/20, Train Loss: 6.5124, Val Loss: 7.7249
+2025-08-10 10:52:47 - INFO - Epoch 16/20, Train Loss: 6.4648, Val Loss: 7.7046
+2025-08-10 10:53:08 - INFO - Epoch 17/20, Train Loss: 6.4277, Val Loss: 7.6885
+2025-08-10 10:53:30 - INFO - Epoch 18/20, Train Loss: 6.3979, Val Loss: 7.6741
+2025-08-10 10:53:49 - INFO - Epoch 19/20, Train Loss: 6.3713, Val Loss: 7.6621
+2025-08-10 10:54:09 - INFO - Epoch 20/20, Train Loss: 6.3472, Val Loss: 7.6524
+2025-08-10 10:54:09 - INFO - Training complete.
+2025-08-10 10:54:09 - INFO - Model saved at ./models/model_20_epochs_date2025-08-10.pth

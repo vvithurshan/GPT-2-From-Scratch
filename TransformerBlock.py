@@ -4,6 +4,8 @@ from MultiHeadAttention import MultiHeadAttention
 from LayerNorm import LayerNorm
 from FeedForward import FeedForward
 
+torch.manual_seed(42)
+
 class TransformerBlock(nn.Module):
     def __init__(self, config):
         super().__init__()

@@ -1,5 +1,6 @@
 import torch.nn as nn
 import torch
+torch.manual_seed(42)
 
 class GELU(nn.Module):
     def __init__(self):

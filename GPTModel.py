@@ -3,6 +3,8 @@ import torch
 from LayerNorm import LayerNorm
 from TransformerBlock import TransformerBlock
 
+torch.manual_seed(42)
+
 class GPTMODEL(nn.Module):
     def __init__(self, config):
         super().__init__()

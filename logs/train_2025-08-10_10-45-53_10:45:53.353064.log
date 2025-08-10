@@ -1,0 +1,13 @@
+2025-08-10 10:45:53 - INFO - Training Data Path: Train_data/discipline.txt
+2025-08-10 10:45:53 - INFO - Train Loader Shape: 
+Inputs: torch.Size([2, 1024])
+Target: torch.Size([2, 1024])
+2025-08-10 10:45:53 - INFO - Validation Loader Shape: 
+Inputs: torch.Size([1, 1024])
+Target: torch.Size([1, 1024])
+2025-08-10 10:45:53 - INFO - Using device: cpu
+2025-08-10 10:45:54 - INFO - Training...
+2025-08-10 10:46:09 - INFO - Epoch 1/2, Train Loss: 9.6748, Val Loss: 9.8897
+2025-08-10 10:46:24 - INFO - Epoch 2/2, Train Loss: 9.0098, Val Loss: 9.3110
+2025-08-10 10:46:24 - INFO - Training complete.
+2025-08-10 10:46:25 - INFO - Model saved at ./models/model_2_epochs_date2025-08-10.pth

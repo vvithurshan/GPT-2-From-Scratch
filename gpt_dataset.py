@@ -1,6 +1,6 @@
 import torch
 from torch.utils.data import Dataset
-
+torch.manual_seed(42)
 class GPTDataset(Dataset):
     """
     Custom PyTorch Dataset for preparing text data for a GPT-like model.
